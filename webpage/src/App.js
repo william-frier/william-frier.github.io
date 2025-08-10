@@ -49,11 +49,11 @@ function App() {
       <MyNavBar/>
 
       {/*includes the content*/}
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<Project1Page />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<Project1Page />} />
         </Routes>
       </Router>
 
