@@ -1,5 +1,11 @@
 import me from './WilliamBW.png';
 import './App.css';
+
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+import Project1Page from './pages/page_projects.js'
+import HomePage from './pages/home.js'
+import AboutPage from './pages/about.js'
 import React, { useState } from 'react';
 import {
   Button,
@@ -31,6 +37,7 @@ function App() {
         />
       </head>
 
+      
       <div className="App">
         <header className="App-header">
           <div class="image-cropper">
@@ -41,36 +48,27 @@ function App() {
       {/* includes the navBars*/}
       <MyNavBar/>
 
-        <h1>
-          Hello!
-        </h1>
+      {/*includes the content*/}
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<Project1Page />} />
+        </Routes>
+      </Router>
 
 
-        <div className="App-body" id="Intro">
-          <p>
-            Trying to learn web development.
-          </p>
-        </div>
+        
+      
+      
+      
       </div>
-      
-      <MyButton />
-      
     </>
 
   );
 }
 
-function MyButton() {
-  function handleClick() {
-    alert('You clicked me!');
-  }
 
-  return (
-    <Button onClick={handleClick}>
-      I'm a button
-    </Button>
-  );
-}
 
 function MyNavBar()
 {
@@ -86,12 +84,12 @@ function MyNavBar()
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">About</NavLink>
+              <NavLink href="/about">About</NavLink>
             </NavItem>
 
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                Projects
+              <NavLink href="https://scholar.google.com/citations?user=xFWd6ZoAAAAJ&hl=en">
+               Scholar
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
@@ -99,10 +97,8 @@ function MyNavBar()
                 Projects
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
+                <DropdownItem><NavLink href="/projects">Project1</NavLink></DropdownItem>
+                <DropdownItem>Project 2</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
