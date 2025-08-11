@@ -1,26 +1,20 @@
 import me from './WilliamBW.png';
-import './App.css';
+import './style.css';
 
 import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 
-import Project1Page from './pages/page_projects.js'
+import Project1Page from './pages/projects.js'
 import HomePage from './pages/home.js'
 import AboutPage from './pages/about.js'
 import React, { useState } from 'react';
 import {
-  Button,
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
+  NavLink
 } from 'reactstrap';
 
 
@@ -88,21 +82,15 @@ function MyNavBar()
             </NavItem>
 
             <NavItem>
+                <NavLink href="/#/projects">Projects</NavLink>
+            </NavItem>
+
+            <NavItem>
               <NavLink href="https://scholar.google.com/citations?user=xFWd6ZoAAAAJ&hl=en">
                Scholar
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Projects
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem><NavLink href="/#/projects">Project1</NavLink></DropdownItem>
-                <DropdownItem>Project 2</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </Nav>
-          <NavbarText>A personal Website</NavbarText>
         </Collapse>
       </Navbar>
     </div>
