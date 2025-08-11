@@ -1,7 +1,7 @@
 import me from './WilliamBW.png';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import Project1Page from './pages/page_projects.js'
 import HomePage from './pages/home.js'
@@ -84,7 +84,7 @@ function MyNavBar()
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/about">About</NavLink>
+              <NavLink href="/#/about">About</NavLink>
             </NavItem>
 
             <NavItem>
@@ -97,7 +97,7 @@ function MyNavBar()
                 Projects
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem><NavLink href="/projects">Project1</NavLink></DropdownItem>
+                <DropdownItem><NavLink href="/#/projects">Project1</NavLink></DropdownItem>
                 <DropdownItem>Project 2</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
