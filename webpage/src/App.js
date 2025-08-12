@@ -3,9 +3,11 @@ import './style.css';
 
 import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 
-import Project1Page from './pages/projects.js'
+import ProjectPage from './pages/projects.js'
 import HomePage from './pages/home.js'
 import AboutPage from './pages/about.js'
+import Project1 from './pages/project_1.js';
+
 import React, { useState } from 'react';
 import {
   Collapse,
@@ -16,6 +18,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+import Project_1 from './pages/project_1.js';
 
 
 
@@ -47,7 +50,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<Project1Page />} />
+            <Route path="/projects" element={<ProjectPage />} />
+            <Route path="/projects/project1" element={<Project1/>} />
         </Routes>
       </Router>
 
