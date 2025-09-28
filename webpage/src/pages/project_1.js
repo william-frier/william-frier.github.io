@@ -45,6 +45,13 @@ function Project1() {
     setXIsNext(!xIsNext);
   }
 
+  function handleRestartClick(){
+    for(let i = 0; i < 9; i++){
+      setSquares(Array(9).fill(null));
+    }
+    setXIsNext(true);
+  }
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -52,6 +59,7 @@ function Project1() {
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
+
 
   return (
     <div>
@@ -67,6 +75,10 @@ function Project1() {
 
         <div>
           {status}
+        </div>
+
+        <div> 
+          <Restart onRestartClick={() => handleRestartClick()}/>
         </div>
 
         <div class="App-body">
@@ -99,6 +111,16 @@ function Square({value, onSquareClick}){
     >
       {value}
     </button>
+  );
+}
+
+function Restart({onRestartClick}){
+  return(
+
+    <button
+      class="Restart"
+      onClick={onRestartClick}
+      > Restart</button>
   );
 }
 
