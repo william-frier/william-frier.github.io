@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import '../style.css';
-import Project1 from './project_1';
 
 import {
     Button,
@@ -27,7 +25,7 @@ function ProjectPage() {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/#/">
+            <NavLink href="/#/projects/project2">
               Project 2
             </NavLink>
           </NavItem>

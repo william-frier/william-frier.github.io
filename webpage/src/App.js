@@ -7,6 +7,7 @@ import ProjectPage from './pages/projects.js'
 import HomePage from './pages/home.js'
 import AboutPage from './pages/about.js'
 import Project1 from './pages/project_1.js';
+import Project2 from './pages/project_2.js';
 
 import React, { useState } from 'react';
 import {
@@ -18,7 +19,6 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import Project_1 from './pages/project_1.js';
 
 
 
@@ -52,6 +52,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectPage />} />
             <Route path="/projects/project1" element={<Project1/>} />
+            <Route path="/projects/project2" element={<Project2/>} />
         </Routes>
       </Router>
 
