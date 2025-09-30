@@ -65,9 +65,9 @@ function Project1() {
     <div>
         <h1>
           Project 1 - Tic-Tac-Toe
-        </h1>s
+        </h1>
 
-        <div className="App-body" id="Intro">
+        <div>
           <p>
             Let's try the <a href="https://react.dev/learn/tutorial-tic-tac-toe"> react tutorial</a>.
           </p>
@@ -81,7 +81,7 @@ function Project1() {
           <Restart onRestartClick={() => handleRestartClick()}/>
         </div>
 
-        <div class="App-body">
+        <div>
         <div className="board-row">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
           <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -106,7 +106,7 @@ function Square({value, onSquareClick}){
 
   return (
     <button 
-      class="square"
+      className="square"
       onClick={onSquareClick}
     >
       {value}

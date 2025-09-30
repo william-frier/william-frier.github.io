@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+
 .content-body {
     text-align: left;
     margin-left: auto;
@@ -73,10 +78,10 @@
     width: 34px;
   }
   
-  .board-row:after {
+  .board-row:after{
     clear: both;
     content: '';
-    display: table;
+    display:grid;
     padding: 0;
   }
   
