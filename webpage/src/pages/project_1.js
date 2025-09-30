@@ -64,8 +64,8 @@ function Project1() {
   return (
     <div>
         <h1>
-          Tic-Tac-Toe
-        </h1>
+          Project 1 - Tic-Tac-Toe
+        </h1>s
 
         <div className="App-body" id="Intro">
           <p>

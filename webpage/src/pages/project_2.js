@@ -1,17 +1,17 @@
 import React from "react";
 import '../style.css';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, layouts, Scale, scales } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
+import { Doughnut , Bar} from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+
+ChartJS.register(CategoryScale, ArcElement, Tooltip, Legend,  LinearScale, BarElement);
 
 export const data = {
   labels: ['Red', 'Blue', 'Yellow'],
-  datasets: [
-    {
-      label: 'Quantity',
-      data: [12, 19, 3],
+  datasets: [{
+      data: [9, 16, 25],
+      label: ' Quantity',
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -24,6 +24,7 @@ export const data = {
       ],
       borderWidth: 0,
       spacing: 2,
+      maxBarWidth:100,
     },
   ],
 };
@@ -32,10 +33,25 @@ export const data = {
 function Project2() {
     return(
         <div>
-            <h1>Hello Project 2!!!</h1>
+            <h1>Project 2 - Data visualisation</h1>
+            <div className="App-body" id="Intro">
+          <p>
+            Let's try the React components <a href="https://react-chartjs-2.js.org"> react-chartjs-2</a>.
+          </p>
+          <p>We will start with 3 data points: 9, 16, and 25</p>
+        </div>
+            <h2>Here we display them using a doughnut graph</h2>
+
             <div>
-                <Doughnut data={data} width={300} height={300} options={{ maintainAspectRatio: false}}/>
+                <Doughnut data={data} width={300} height={300} options={{ maintainAspectRatio:false}}/>
             </div>
+
+            <h2>Here we display them using a bar graph</h2>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Bar data={data} width={300}  height={300} options={{ maintainAspectRatio:false, responsive:false}}/>
+            </div>
+
+
         </div>
         
     );
