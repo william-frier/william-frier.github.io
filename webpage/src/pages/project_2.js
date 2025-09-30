@@ -34,12 +34,14 @@ function Project2() {
     return(
         <div>
             <h1>Project 2 - Data visualisation</h1>
-            <div className="App-body" id="Intro">
-          <p>
-            Let's try the React components <a href="https://react-chartjs-2.js.org"> react-chartjs-2</a>.
-          </p>
-          <p>We will start with 3 data points: 9, 16, and 25</p>
-        </div>
+            <div>
+                <p>
+                Let's try the React components <a href="https://react-chartjs-2.js.org"> react-chartjs-2</a>.
+                </p>
+                <p>We will start with 3 data points: 9, 16, and 25</p>
+            </div>
+            
+            
             <h2>Here we display them using a doughnut graph</h2>
 
             <div>
