@@ -95,6 +95,12 @@ function MyNavBar()
                Scholar
               </NavLink>
             </NavItem>
+
+            <NavItem>
+              <NavLink href="https://www.linkedin.com/in/williamfrier">
+                Linkedin
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
