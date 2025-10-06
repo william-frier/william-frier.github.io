@@ -1,7 +1,7 @@
 import me from './WilliamBW.png';
 import './style.css';
 
-import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes} from "react-router-dom";
 
 import ProjectPage from './pages/projects.js'
 import HomePage from './pages/home.js'
@@ -91,13 +91,13 @@ function MyNavBar()
             </NavItem>
 
             <NavItem>
-              <NavLink href="https://scholar.google.com/citations?user=xFWd6ZoAAAAJ&hl=en">
+              <NavLink href="https://scholar.google.com/citations?user=xFWd6ZoAAAAJ&hl=en" target="_blank">
                Scholar
               </NavLink>
             </NavItem>
 
             <NavItem>
-              <NavLink href="https://www.linkedin.com/in/williamfrier">
+              <NavLink href="https://www.linkedin.com/in/williamfrier" target = "_blank">
                 Linkedin
               </NavLink>
             </NavItem>

@@ -33,10 +33,10 @@ export const data = {
 function Project2() {
     return(
         <div>
-            <h1>Project 2 - Data visualisation</h1>
+            <h1>Project 2 - Charts</h1>
             <div>
                 <p>
-                Let's try the React components <a href="https://react-chartjs-2.js.org"> react-chartjs-2</a>.
+                Let's try the React components <a href="https://react-chartjs-2.js.org" target="_blank"> react-chartjs-2</a>.
                 </p>
                 <p>We will start with 3 data points: 9, 16, and 25</p>
             </div>

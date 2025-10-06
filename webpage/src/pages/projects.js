@@ -26,7 +26,7 @@ function ProjectPage() {
           </NavItem>
           <NavItem>
             <NavLink href="/#/projects/project2">
-              Project 2
+              Charts
             </NavLink>
           </NavItem>
           <NavItem>

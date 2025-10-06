@@ -9,9 +9,10 @@ function HomePage() {
           Hello!
         </h1>
 
-        <div className="App-body" id="Intro">
+        <div style={{float:"left" , marginTop:10, paddingLeft:"25%", paddingRight:"25%"}}>
           <p>
-            I am learning web development. Bare with me as this place improves with time.
+            Spreading news about haptics and its community, whilst learning about web development. 
+            Bare with me as I create content, and learn how to display it nicely.
           </p>
         </div>
       </div>

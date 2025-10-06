@@ -62,14 +62,14 @@ function Project1() {
 
 
   return (
-      <div style={{ marginLeft:50, float: 'left'}}>
+      <div style={{ paddingLeft:"25%", paddingRight:"25%", float: 'left',  width:"100%"}}>
         <h1>
           Project 1 - Tic-Tac-Toe
         </h1>
 
         <div>
           <p>
-            Let's try the <a href="https://react.dev/learn/tutorial-tic-tac-toe"> react tutorial</a>.
+            Let's try the <a href="https://react.dev/learn/tutorial-tic-tac-toe" target="_blank"> react tutorial</a>.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ function Project1() {
 
         <div><p></p></div>
 
-        <div style={{marginLeft: 80}}>
+        <div style={{paddingLeft: "35%", width:"100%"}}>
           <div className="board-row">
             <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
             <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
