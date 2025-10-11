@@ -8,6 +8,7 @@ import HomePage from './pages/home.js'
 import AboutPage from './pages/about.js'
 import Project1 from './pages/project_1.js';
 import Project2 from './pages/project_2.js';
+import ArticlePage from './pages/articles.js';
 
 import React, { useState } from 'react';
 import {
@@ -49,6 +50,7 @@ function App() {
       <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+            <Route path="/articles" element={<ArticlePage/>} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectPage />} />
             <Route path="/projects/project1" element={<Project1/>} />
@@ -83,11 +85,15 @@ function MyNavBar()
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/#/about">About</NavLink>
+              <NavLink href="/#/articles">Articles</NavLink>              
             </NavItem>
 
             <NavItem>
                 <NavLink href="/#/projects">Projects</NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink href="/#/about">About</NavLink>
             </NavItem>
 
             <NavItem>
