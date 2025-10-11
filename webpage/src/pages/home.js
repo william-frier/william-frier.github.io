@@ -11,8 +11,11 @@ function HomePage() {
 
         <div style={{float:"left" , marginTop:10, paddingLeft:"25%", paddingRight:"25%"}}>
           <p>
-            Spreading news about haptics and its community, whilst learning about web development. 
-            Bare with me as I create content, and learn how to display it nicely.
+            I am william. Nice meeting you.
+          </p>
+          <p>
+            I have 10+ year experience in R&D, mostly in Haptics and Human Computer Interactions. 
+
           </p>
         </div>
       </div>

@@ -6,8 +6,8 @@ import { HashRouter as Router, Route, Routes} from "react-router-dom";
 import ProjectPage from './pages/projects.js'
 import HomePage from './pages/home.js'
 import AboutPage from './pages/about.js'
-import Project1 from './pages/project_1.js';
-import Project2 from './pages/project_2.js';
+import Project1 from './pages/projects/project_1.js';
+import Project2 from './pages/projects/project_2.js';
 import ArticlePage from './pages/articles.js';
 
 import React, { useState } from 'react';
@@ -39,7 +39,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <div class="image-cropper">
-            <img src={me} alt="profile pic" width="200" height="300" />
+            <img src={me} alt="profile pic" width="100" height="150" />
           </div>
         </header>
 

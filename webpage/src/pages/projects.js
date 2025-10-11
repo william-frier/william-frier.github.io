@@ -20,7 +20,12 @@ function ProjectPage() {
         <Row style={{padding:"2%"}}> 
     
             <h1>Projects</h1>
-            <p>Welcome to the projects page. Each project is thought as a small React App that gets me to practice.</p>
+            <p>Here is a little sometthing different...</p>
+            <p>
+              I am learning web development. 
+              On this page, I am sharing small projects I am doing as I am practicing.
+              Nothing fancy, just ome Node.js and React.
+            </p>
 
         </Row>       
 
