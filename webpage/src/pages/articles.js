@@ -29,7 +29,7 @@ function ArticlePage() {
                 <CardText>
                   Text 1
                 </CardText>
-                <Button href="/#/projects/project1">
+                <Button href="/#/">
                   Go to article
                 </Button>
               </CardBody>
@@ -43,7 +43,7 @@ function ArticlePage() {
                 <CardText>
                   A simple texte
                 </CardText>
-                <Button href="/#/projects/project1">
+                <Button href="/#/">
                   Go to article
                 </Button>
               </CardBody>
@@ -57,7 +57,7 @@ function ArticlePage() {
                 <CardText>
                   A simple text.
                 </CardText>
-                <Button href="/#/projects/project1">
+                <Button href="/#/">
                   Go to article
                 </Button>
               </CardBody>
