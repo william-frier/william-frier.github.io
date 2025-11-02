@@ -61,7 +61,7 @@ function ProjectPage() {
 
           <Col>
             <Card style={{ width: '16rem' }}>
-              <CardHeader>Project 3</CardHeader>
+              <CardHeader>Project 0</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">Magic Button</CardTitle>
                 <CardText>
@@ -71,6 +71,22 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card style={{width:'16rem'}}>
+                <CardHeader>Project 3</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">Haptics?</CardTitle>
+                  <CardText>
+                    Haptics?
+                  </CardText>
+                  <Button href="/#/projects/project3">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
         </Container>
 
