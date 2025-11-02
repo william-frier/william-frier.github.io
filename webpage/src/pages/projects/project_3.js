@@ -18,7 +18,7 @@ function Project3() {
             <h1>Project 3 - Haptics</h1>
 
             <h5><em>Test with Android</em></h5>
-            <Button title="Vibrate once" onPress={() => Vibration.vibrate()} />
+            <Button title="Vibrate once for 100ms" onPress={() => navigator.vibrate(200)}/>
 
 
         </div>
