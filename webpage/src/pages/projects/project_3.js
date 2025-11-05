@@ -26,10 +26,10 @@ import {
         <div>
             <h1>Project 3 - Haptics</h1>
 
-            <h5><em>Test with Android, no "silent mode"</em></h5>
-
-            <p>My pixel 7 takes shorter than 1s depends on the level of "Vibration and haptics/Interactive Haptics/Touch feeeback" options</p>
-
+            <h5><em>Works with Android, when "silent mode" is not active.</em></h5>
+            <p>I tested the below with my personal phone (Pixel 7)</p>
+            <p>To perceive vibrations less than 1s long, I had to ajdust the level of "Vibration and haptics/Interactive Haptics/Touch feeeback" in the setting menu</p>
+            <p>Note that this use <code>navigator.vibrate()</code></p>
             <Container>
                 <Row>
                     <Col>

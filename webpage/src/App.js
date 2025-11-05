@@ -87,16 +87,17 @@ function MyNavBar()
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/#/articles">Articles</NavLink>              
+              <NavLink href="/#/articles">Publications</NavLink>              
             </NavItem>
 
             <NavItem>
                 <NavLink href="/#/projects">Projects</NavLink>
             </NavItem>
 
+            {/*
             <NavItem>
               <NavLink href="/#/about">About</NavLink>
-            </NavItem>
+            </NavItem>*/}
 
             <NavItem>
               <NavLink href="https://scholar.google.com/citations?user=xFWd6ZoAAAAJ&hl=en" target="_blank">
