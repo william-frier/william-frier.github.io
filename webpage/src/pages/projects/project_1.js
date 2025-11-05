@@ -43,6 +43,7 @@ function Project1() {
 
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
+
   }
 
   function handleRestartClick(){
@@ -50,6 +51,13 @@ function Project1() {
       setSquares(Array(9).fill(null));
     }
     setXIsNext(true);
+  }
+
+  function handleRandomMove(){
+    let j = Math.ceil(Math.random()*9);
+    while(squares[j] || j==9) j = Math.floor(Math.random()*9);
+
+    handleClick(j);
   }
 
   const winner = calculateWinner(squares);
@@ -79,6 +87,9 @@ function Project1() {
 
         <div> 
           <Restart onRestartClick={() => handleRestartClick()}/>
+        </div>
+        <div>
+          <RandomMove onRandomClick={() => handleRandomMove()}/>
         </div>
 
         <div><p></p></div>
@@ -124,6 +135,14 @@ function Restart({onRestartClick}){
       onClick={onRestartClick}
       > Restart</button>
   );
+}
+
+function RandomMove({onRandomClick}){
+  return(
+    <button class="RandomMove"
+    onClick={onRandomClick}
+    >Random</button>
+  )
 }
 
 export default Project1;
