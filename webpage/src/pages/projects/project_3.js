@@ -24,10 +24,15 @@ import {
         }
       };
 
-    function getValue() {
-        const inputValue = document.getElementById("duration").value
-        console.log(inputValue);
-        alert(inputValue);
+    function getVibValue() {
+        const VibValue1 = document.getElementById("duration 1").value
+        const BreakValue1 = document.getElementById("break 1").value
+        const VibValue2 = document.getElementById("duration 2").value
+        const BreakValue2 = document.getElementById("break 2").value
+        const VibValue3 = document.getElementById("duration 3").value
+        handleVibrate([VibValue1, BreakValue1,
+                        VibValue2, BreakValue2,
+                        VibValue3])
     }
     
  
@@ -83,20 +88,57 @@ import {
             <div>
                 <Container>
                     <Row>
-                        <Col md={6}>
-                        <FormGroup>
-                            <Label for="duration">
-                                Vib Duration
-                            </Label>
-                            <Input type="text" id="duration"></Input>
-
-                        </FormGroup>
-                            
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="duration 1">
+                                    Vib Duration
+                                </Label>
+                                <Input type="text" id="duration 1"></Input>
+                            </FormGroup>
                         </Col>
-                        <Col>
-                        <FormGroup>
-                            <Button onClick={getValue} type="submit">Submit</Button>
-                        </FormGroup>
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="break 1">
+                                    Break Duration
+                                </Label>
+                                <Input type="text" id="break 1"></Input>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="duration 2">
+                                    Vib Duration
+                                </Label>
+                                <Input type="text" id="duration 2"></Input>
+                            </FormGroup>
+                        </Col>
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="break 2">
+                                    Break Duration
+                                </Label>
+                                <Input type="text" id="break 2"></Input>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="duration 3">
+                                    Vib Duration
+                                </Label>
+                                <Input type="text" id="duration 3"></Input>
+                            </FormGroup>
+                        </Col>
+                        <Col md={2}>
+                            <FormGroup>
+                                <Label for="submit">
+                                    Validate
+                                </Label>
+                                <Button onClick={getVibValue} id="submit">Submit Pattern</Button>
+                            </FormGroup>
                         </Col>
                     </Row>
                 </Container>
