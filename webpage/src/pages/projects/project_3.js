@@ -5,7 +5,10 @@ import {
     Button,
     Row,
     Col,
-    Container
+    Container,
+    Input,
+    FormGroup,
+    Label
   } from 'reactstrap';
 
 
@@ -20,6 +23,12 @@ import {
             alert("Vibration API not supported on this device.");
         }
       };
+
+    function getValue() {
+        const inputValue = document.getElementById("duration").value
+        console.log(inputValue);
+        alert(inputValue);
+    }
     
  
     return(
@@ -42,6 +51,7 @@ import {
                         <Button onClick={() => handleVibrate([1001])}>1001ms</Button>
                     </Col>
                 </Row>
+                <div style={{marginTop:20}}></div>
                 <Row>
                 <Col>
                         <Button onClick={() => handleVibrate([200])}>200ms</Button>
@@ -53,6 +63,7 @@ import {
                         <Button onClick={() => handleVibrate([50])}>50ms</Button>
                     </Col>
                 </Row>
+                <div style={{marginTop:20}}></div>
                 <Row>
                     <Col>
                         <Button onClick={() => handleVibrate([100, 10, 100])}>100, 10, 100</Button>
@@ -66,6 +77,31 @@ import {
                 </Row>
 
             </Container>
+
+            <div style={{marginTop:50}}></div>
+
+            <div>
+                <Container>
+                    <Row>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label for="duration">
+                                Vib Duration
+                            </Label>
+                            <Input type="text" id="duration"></Input>
+
+                        </FormGroup>
+                            
+                        </Col>
+                        <Col>
+                        <FormGroup>
+                            <Button onClick={getValue} type="submit">Submit</Button>
+                        </FormGroup>
+                        </Col>
+                    </Row>
+                </Container>
+                
+            </div>
 
 
         </div>

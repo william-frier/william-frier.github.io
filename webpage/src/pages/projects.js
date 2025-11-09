@@ -10,6 +10,7 @@ import {
     Row,
     Col,
     Container,
+    UncontrolledTooltip
 
 } from 'reactstrap';
 
@@ -29,8 +30,28 @@ function ProjectPage() {
 
         </Row>       
 
-        <Row style={{padding:"2%"}}>
-          <Col>
+        <Row>
+
+        <Col sm={{offset:1, size:"auto"}}>
+            <Card style={{ width: '16rem' }}>
+              <CardHeader>Project 0</CardHeader>
+              <CardBody>
+                <CardTitle tag="h5">Magic Button</CardTitle>
+                <CardText>
+                  Trying something out 
+                </CardText>
+                <Button id="ScheduleUpdateTooltip">
+                  Here is a button.
+                </Button>
+                <UncontrolledTooltip
+                  placement="top"
+                  target="ScheduleUpdateTooltip"
+                  trigger="click"
+                > stop pushing my button</UncontrolledTooltip>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col sm={{offset:1, size:"auto"}}>
             <Card style={{ width: '16rem' }}>
               <CardHeader>Project 1</CardHeader>
               <CardBody>
@@ -44,7 +65,7 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
-          <Col>
+          <Col sm={{offset:1, size:"auto"}}>
             <Card style={{ width: '16rem' }}>
               <CardHeader>Project 2</CardHeader>
               <CardBody>
@@ -58,22 +79,9 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
-
-          <Col>
-            <Card style={{ width: '16rem' }}>
-              <CardHeader>Project 0</CardHeader>
-              <CardBody>
-                <CardTitle tag="h5">Magic Button</CardTitle>
-                <CardText>
-                  Trying something out 
-                </CardText>
-                <MyButton/>
-              </CardBody>
-            </Card>
-          </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={{offset:1, size:"auto"}}>
               <Card style={{width:'16rem'}}>
                 <CardHeader>Project 3</CardHeader>
                 <CardBody>
@@ -92,18 +100,6 @@ function ProjectPage() {
 
         
     </>
-  );
-}
-
-function MyButton() {
-  function handleClick() {
-    alert('Stop pushing my buttons!');
-  }
-
-  return (
-    <Button onClick={handleClick} style={{width:"12rem"}}>
-      Here is a button.
-    </Button>
   );
 }
 
