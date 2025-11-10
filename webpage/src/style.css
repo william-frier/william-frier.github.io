@@ -87,4 +87,11 @@
     content: '';
     display: table;
   }
-  
+
+  .circle{
+    width: 20px;        /* width of the dot */
+    height: 40px;       /* height of the dot */
+    background-color: red; /* red color */
+    border-radius: 10%; /* makes the div a circle */
+    display: inline-block; /* keeps it inline */
+  }

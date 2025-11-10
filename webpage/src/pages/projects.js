@@ -95,6 +95,34 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
+            <Col sm={{offset:1, size:"auto"}}>
+              <Card style={{width:'16rem'}}>
+                <CardHeader>Project 4</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">p5</CardTitle>
+                  <CardText>
+                    Simple p5 project
+                  </CardText>
+                  <Button href="/#/projects/project4">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col sm={{offset:1, size:"auto"}}>
+              <Card style={{width:'16rem'}}>
+                <CardHeader>Project 5</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">Perlin Noise</CardTitle>
+                  <CardText>
+                    Perlin noise using p5 
+                  </CardText>
+                  <Button href="/#/projects/project5">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
         </Container>
 

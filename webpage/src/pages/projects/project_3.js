@@ -44,6 +44,7 @@ import {
             <p>I tested the below with my personal phone (Pixel 7)</p>
             <p>To perceive vibrations less than 1s long, I had to ajdust the level of "Vibration and haptics/Interactive Haptics/Touch feeeback" in the setting menu</p>
             <p>Note that this use <code>navigator.vibrate()</code></p>
+            <p>There is a limit of 10s</p>
             <Container>
                 <Row>
                     <Col>
@@ -77,7 +78,28 @@ import {
                         <Button onClick={() => handleVibrate([10, 1, 10])}>10, 1, 10</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => handleVibrate([100, 10, 100])}>50, 20,  100</Button>
+                        <Button onClick={() => handleVibrate([100, 10, 100])}>50, 20, 100</Button>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button onClick={() => handleVibrate([200, 100, 200, 100, 200, 100,
+                                                            400, 100, 400, 100, 400, 100,
+                                                            200, 100, 200, 100, 200, 100 ])}>
+                            S.O.S.</Button>
+                    </Col>
+                    <Col>
+                            <Button onClick={() => handleVibrate([200, 100, 200, 100, 200, 100,
+                                                            400, 100, 400, 100, 400, 100,
+                                                            200, 100, 200, 100, 200, 1000,
+                                                            200, 100, 200, 100, 200, 100,
+                                                            400, 100, 400, 100, 400, 100,
+                                                            200, 100, 200, 100, 200, 100 ])}>
+                            S.O.S. x2</Button>
+
+                    </Col>
+                    <Col>
+                        <Button onClick={() => handleVibrate([20000])}>Long (20s)</Button>
                     </Col>
                 </Row>
 
@@ -142,6 +164,10 @@ import {
                         </Col>
                     </Row>
                 </Container>
+                
+            </div>
+
+            <div class="circle">
                 
             </div>
 
