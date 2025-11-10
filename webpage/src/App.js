@@ -10,7 +10,7 @@ import Project1 from './pages/projects/project_1.js';
 import Project2 from './pages/projects/project_2.js';
 import Project3 from './pages/projects/project_3.js';
 import Project4 from './pages/projects/project_4.js';
-import Project5 from './pages/projects/Project5/project_5.js';
+import Project5 from './pages/projects/project_5.js';
 import ArticlePage from './pages/articles.js';
 
 import React, { useState } from 'react';
