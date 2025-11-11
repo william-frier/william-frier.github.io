@@ -124,6 +124,23 @@ function ProjectPage() {
               </Card>
             </Col>
           </Row>
+            <Col sm={{offset:1, size:"auto"}}>
+              <Card style={{width:'16rem'}}>
+                <CardHeader>Project 6</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">Motion Field</CardTitle>
+                  <CardText>
+                    Motion Field using p5 
+                  </CardText>
+                  <Button href="/#/projects/project6">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
+          <Row>
+
+          </Row>
         </Container>
 
         
