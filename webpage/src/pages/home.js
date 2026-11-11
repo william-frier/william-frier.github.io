@@ -6,23 +6,23 @@ function HomePage() {
   return (
     <div>
         <h1>
-          Hello!
+          William FRIER
         </h1>
 
         <div className="reading-content">
           <p>
-            I am William. Nice meeting you.
+            Experiments with code, perception and interaction.
           </p>
           <p>
-            I have 10 years experience in <b>Haptics</b>, walking the line between Industry R&D and Academic Research. 
-            But who cares about this...
-          </p>
-          <p>
-            This is not about a blog, this is not even a personal page. 
-            This is practice, while I learn web development. 
-            Most of what you see here, is somewhat an experiment. 
-            A mean to learn a new react component, to practice a bit of javascript.
-            The main experiments are on the project page. 
+            Hello! This is my space for trying things out: creative coding, web development, interactive experiments, and the occosional excursion into haptics.
+
+            I spent a decade working in  <b>haptics</b>, and while I still collaborate on a few research projects, my R&D days are behind me. 
+            
+            I am still curious though and I want to keep exploring. I created this site with that purpose in mind: keep building!
+            
+            Some things here might become projets. Others are just interesting things I enjoyed playing with.
+
+            Explore my expriments and let me know what you think!
           </p>
         </div>
       </div>
