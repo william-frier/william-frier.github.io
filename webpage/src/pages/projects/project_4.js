@@ -30,11 +30,13 @@ function sketch(p) {
         {
             dir = 1;
             i +=1 ;
+            triggerHaptic();
         }
         if( x < 10 && dir == 1) 
         {
             dir = 0;
             i +=1;
+            triggerHaptic();
         }
 
         i = i%18;
@@ -53,6 +55,12 @@ function Project4() {
     }, []);
   
     return <div className="sketch-container" ref={containerRef} />;
+}
+
+function triggerHaptic(){
+  if("vibrate" in navigator) {
+    navigator.vibrate(20);
+  }
 }
 
 export default Project4;
