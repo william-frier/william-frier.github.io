@@ -59,7 +59,7 @@ function Project4() {
 
 function triggerHaptic(){
   if("vibrate" in navigator) {
-    navigator.vibrate(20);
+    navigator.vibrate(50);
   }
 }
 
