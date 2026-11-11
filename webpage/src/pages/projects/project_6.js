@@ -103,7 +103,6 @@ function sketch(p) {
           field_angle.push(row);
         }
 
-
         phi += 0.01*(Math.random()-0.5);
         for(let pi = 0; pi< particle_n; pi++) {
             p.stroke(0,220,0,200);
