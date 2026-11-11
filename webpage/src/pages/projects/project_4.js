@@ -8,6 +8,11 @@ function sketch(p) {
     let x = 0;
     let dir = 0;
     let i = 0;
+    function triggerHaptic(){
+      if("vibrate" in navigator) {
+        navigator.vibrate(50);
+      }
+}
 
     p.setup = function() {
         p.createCanvas(400, 400);
@@ -57,10 +62,6 @@ function Project4() {
     return <div className="sketch-container" ref={containerRef} />;
 }
 
-function triggerHaptic(){
-  if("vibrate" in navigator) {
-    navigator.vibrate(50);
-  }
-}
+
 
 export default Project4;
