@@ -17,7 +17,7 @@ import {
 function ProjectPage() {
   return (
     <>
-     <Container>
+     <Container className="projects-page">
         <Row style={{padding:"2%"}}> 
     
             <h1>Projects</h1>
@@ -30,10 +30,10 @@ function ProjectPage() {
 
         </Row>       
 
-        <Row>
+        <Row className="project-grid">
 
-        <Col sm={{offset:1, size:"auto"}}>
-            <Card style={{ width: '16rem' }}>
+        <Col>
+            <Card>
               <CardHeader>Project 0</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">Magic Button</CardTitle>
@@ -51,8 +51,8 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
-          <Col sm={{offset:1, size:"auto"}}>
-            <Card style={{ width: '16rem' }}>
+          <Col>
+            <Card>
               <CardHeader>Project 1</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">Tic-Tact-Toe</CardTitle>
@@ -65,8 +65,8 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
-          <Col sm={{offset:1, size:"auto"}}>
-            <Card style={{ width: '16rem' }}>
+          <Col>
+            <Card>
               <CardHeader>Project 2</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">Charts</CardTitle>
@@ -79,10 +79,9 @@ function ProjectPage() {
               </CardBody>
             </Card>
           </Col>
-          </Row>
-          <Row>
-            <Col sm={{offset:1, size:"auto"}}>
-              <Card style={{width:'16rem'}}>
+
+            <Col>
+              <Card>
                 <CardHeader>Project 3</CardHeader>
                 <CardBody>
                   <CardTitle tag="h5">Haptics?</CardTitle>
@@ -95,8 +94,8 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
-            <Col sm={{offset:1, size:"auto"}}>
-              <Card style={{width:'16rem'}}>
+            <Col>
+              <Card>
                 <CardHeader>Project 4</CardHeader>
                 <CardBody>
                   <CardTitle tag="h5">p5</CardTitle>
@@ -109,8 +108,8 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
-            <Col sm={{offset:1, size:"auto"}}>
-              <Card style={{width:'16rem'}}>
+            <Col>
+              <Card>
                 <CardHeader>Project 5</CardHeader>
                 <CardBody>
                   <CardTitle tag="h5">Perlin Noise</CardTitle>
@@ -123,9 +122,8 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
-          </Row>
-            <Col sm={{offset:1, size:"auto"}}>
-              <Card style={{width:'16rem'}}>
+            <Col>
+              <Card>
                 <CardHeader>Project 6</CardHeader>
                 <CardBody>
                   <CardTitle tag="h5">Motion Field</CardTitle>
@@ -138,8 +136,6 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
-          <Row>
-
           </Row>
         </Container>
 

@@ -70,7 +70,7 @@ function Project1() {
 
 
   return (
-      <div style={{ paddingLeft:"25%", paddingRight:"25%", float: 'left',  width:"100%"}}>
+      <div className="reading-content">
         <h1>
           Project 1 - Tic-Tac-Toe
         </h1>
@@ -94,7 +94,7 @@ function Project1() {
 
         <div><p></p></div>
 
-        <div style={{paddingLeft: "35%", width:"100%"}}>
+        <div className="game-board">
           <div className="board-row">
             <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
             <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
