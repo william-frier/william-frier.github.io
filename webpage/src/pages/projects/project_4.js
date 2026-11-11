@@ -7,7 +7,22 @@ import p5 from 'p5';
 function sketch(p) {
     let x = 0;
     let dir = 0;
-    let i = 0;
+
+    const colours = [
+      "#440154",
+      "#414487",
+      "#2A788E",
+      "#22A884",
+      "#7AD151",
+      "#FDE725",
+      "#7AD151",
+      "#22A884",
+      "#2A788E",
+      "#414487",
+    ];
+
+    let colourIndex = 0;
+
     function triggerHaptic(){
       if("vibrate" in navigator) {
         navigator.vibrate(50);
@@ -16,17 +31,15 @@ function sketch(p) {
 
     p.setup = function() {
         p.createCanvas(400, 400);
-        p.background(220);
-        p.colorMode(p.HSB);
+        p.colorMode(p.HSB, 360, 100, 100);
     };
   
     p.draw = function() {
         p.background(120);
         p.noStroke();
 
-        p.fill(i*20,100,100)
+        p.fill(colours[colourIndex]);
         p.circle(x, p.height/2, 20);
-
 
         if(dir == 0) x = x + 5;
         else x = x - 5;
@@ -34,17 +47,15 @@ function sketch(p) {
         if( x > p.width-10 && dir == 0 )  
         {
             dir = 1;
-            i +=1 ;
+            colourIndex = (colourIndex + 1) % colours.length;
             triggerHaptic();
         }
         if( x < 10 && dir == 1) 
         {
             dir = 0;
-            i +=1;
+            colourIndex = (colourIndex + 1) % colours.length;
             triggerHaptic();
         }
-
-        i = i%18;
     };
   }
   
