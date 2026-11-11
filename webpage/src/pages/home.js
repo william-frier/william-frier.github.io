@@ -9,7 +9,7 @@ function HomePage() {
           Hello!
         </h1>
 
-        <div style={{float:"left" , marginTop:10, paddingLeft:"25%", paddingRight:"25%"}}>
+        <div className="reading-content">
           <p>
             I am William. Nice meeting you.
           </p>

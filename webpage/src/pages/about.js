@@ -6,7 +6,7 @@ function AboutPage() {
     <div>
       <h1>About</h1>
   
-      <div style={{float:"left" , marginTop:10, paddingLeft:"25%", paddingRight:"25%"}}>
+      <div className="reading-content">
         <p>
           I have 10 years experience in <b>Haptics</b>, walking the line between Industry R&D and Academic Research. 
           But who cares about this. 

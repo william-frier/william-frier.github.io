@@ -33,7 +33,7 @@ function ArticlePage(props) {
     };
   return (
     <>
-    <Container>
+    <Container className="publications-page">
         <Row style={{padding:"2%"}}> 
             <div>
                 <h2>Publications</h2>
@@ -43,10 +43,10 @@ function ArticlePage(props) {
         </Row>
 
         
-        <Row style={{padding:"2%"}}> 
+        <Row className="publication-highlights" style={{padding:"2%"}}>
             <h3> Highlighted Publications</h3>
             <Col>
-            <Card style={{ width: '18rem' }}>
+            <Card>
               <CardHeader>Using spatiotemporal modulation to draw tactile patterns in mid-air</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">2018</CardTitle>
@@ -61,7 +61,7 @@ function ArticlePage(props) {
             </Card>
             </Col>
             <Col>
-            <Card style={{ width: '18rem' }}>
+            <Card>
               <CardHeader>Mid-air haptic bio-holograms in mixed reality</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">2019</CardTitle>
@@ -76,7 +76,7 @@ function ArticlePage(props) {
             </Card>
             </Col>
             <Col>
-            <Card style={{ width: '18rem' }}>
+            <Card>
               <CardHeader>Manifesto for digital social touch in crisis</CardHeader>
               <CardBody>
                 <CardTitle tag="h5">2021</CardTitle>

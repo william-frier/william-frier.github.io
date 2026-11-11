@@ -145,7 +145,7 @@ function Project6() {
       };
     }, []);
   
-    return <div ref={containerRef} />;
+    return <div className="sketch-container" ref={containerRef} />;
 }
 
 export default Project6;
