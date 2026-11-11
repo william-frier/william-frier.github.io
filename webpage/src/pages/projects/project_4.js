@@ -27,12 +27,37 @@ function sketch(p) {
       if("vibrate" in navigator) {
         navigator.vibrate(50);
       }
-}
+    }
+
+    function canvasSize() {
+      const container = p.canvas.parentElement;
+      const styles = getComputedStyle(container);
+
+      return Math.floor(
+        container.clientWidth - 
+        parseFloat(styles.paddingLeft) - 
+        parseFloat(styles.paddingRight)
+      );
+
+    }
 
     p.setup = function() {
-        p.createCanvas(400, 400);
+        p.createCanvas(1, 1);
+
+        const size = canvasSize();
+        p.resizeCanvas(size,size);
+
         p.colorMode(p.HSB, 360, 100, 100);
     };
+
+
+    p.windowResized = function (){
+      const size = canvasSize();
+      p.resizeCanvas(size,size);
+
+      // Keep the ball inside the canvas after shrinking it.
+      x = p.constrain(x, 10, p.width - 10);
+    }
   
     p.draw = function() {
         p.background(120);
@@ -70,9 +95,7 @@ function Project4() {
       };
     }, []);
   
-    return <div className="sketch-container" ref={containerRef} />;
+    return <div className="sketch-container" ref={containerRef} style={{padding: "0 16px"}}/>;
 }
-
-
 
 export default Project4;
