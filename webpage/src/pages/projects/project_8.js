@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 
 function Project8() {
 
-    const N = 8;
-
     function PressureMap({ spacing, focus_height }) {
         const canvasRef = useRef(null);
       
@@ -34,19 +32,24 @@ function Project8() {
               let real = 0;
               let imaginary = 0;
       
-              for (let n = 0; n < N; n++) {
-                const xn = (n - (N - 1) / 2) * spacing;
-                const distance = Math.hypot(x - xn, z);
-      
-                const focusX = 0;
-                const focusZ = focus_height; // wavelengths
-                const focusDistance = Math.hypot(focusX - xn, focusZ);
-                const phase = k * (distance - focusDistance);
+              for (let nx = 0; nx < N; nx++) {
+                for (let ny = 0; ny < N; ny++) {
+                    const xn = (nx - (N - 1) / 2) * spacing;
+                    const yn = (ny - (N - 1) / 2) * spacing;
 
-                real += Math.cos(phase) / distance;
-                imaginary -= Math.sin(phase) / distance;
-                                
+                    const distance = Math.hypot(x - xn, 0 - yn, z);
+        
+                    const focusX = 0;
+                    const focusY = 0;
+                    const focusZ = focus_height; // wavelengths
+                    const focusDistance = Math.hypot(focusX - xn, focusY - yn, focusZ);
+                    const phase = k * (distance - focusDistance);
+
+                    real += Math.cos(phase) / distance;
+                    imaginary -= Math.sin(phase) / distance;
+                }                  
               }
+              
       
               const magnitude = Math.hypot(real, imaginary);
               const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
@@ -69,8 +72,8 @@ function Project8() {
             <div style={{ textAlign: "center" }}>z = 20λ</div>
             <canvas
               ref={canvasRef}
-              width={400}
-              height={390}
+              width={200}
+              height={200}
               role="img"
               aria-label="Pressure magnitude in front of an eight-element acoustic array"
               style={{ display: "block", width: "100%" }}
