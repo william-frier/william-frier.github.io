@@ -136,6 +136,20 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
+            <Col>
+              <Card>
+                <CardHeader>Project 7</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">Array factor</CardTitle>
+                  <CardText>
+                    learn SVG 
+                  </CardText>
+                  <Button href="/#/projects/project7">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
         </Container>
 
