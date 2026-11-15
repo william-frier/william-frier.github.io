@@ -171,7 +171,7 @@ import { useEffect, useRef, useState } from "react";
             <figcaption style={{ textAlign: "center" }}>
               x: −100 mm to +100 mm · Bottom: z = 5mm
               <br />
-              Colour: 90–160 dB SPL re 20 µPa RMS
+              Colour: 100–160 dB SPL re 20 µPa RMS
             </figcaption>
           </figure>
         );
@@ -224,11 +224,6 @@ function Project8() {
                 absorptionDbPerMetre={airAbsorptionDbPerMetre(frequency)}
             />
 
-            
-            <label htmlFor="spacing">
-                Element pitch: {(pitch).toFixed(2)} 
-            </label>
-            <br/>
             <label htmlFor="zfocus">
                 Focus height: {z_focus} m 
             </label>
@@ -243,7 +238,10 @@ function Project8() {
                 onChange={event => setZFocus(Number(event.target.value))}
                 style={{ display: "block", width: "100%", maxWidth: 360, margin: "0 auto" }}
             />
+            
+            <br/>
 
+            <p>Uses piston model for each element of a 8x8 array. Pitch = piston diameter. Reference pressure for each elements is 110dB SPL at 30cm. Attenuation with distance: 1/r. Absorption in air: ISO 9613-1.</p>
 
 
 
