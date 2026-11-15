@@ -188,7 +188,7 @@ function Project8() {
             <h1>Array Sim</h1>
     
             <label htmlFor="pitch">
-                Element pitch: {(pitch*1000).toFixed(2)} mm
+                Element pitch: {(pitch*1000).toFixed(2)} mm / {(pitch*frequency/343).toFixed(2)} λ
             </label>
 
             <input
@@ -205,6 +205,7 @@ function Project8() {
             <label htmlFor="frequency">
                 Element frequency: {frequency} Hz
             </label>
+
 
             <input
                 id="frequency"
