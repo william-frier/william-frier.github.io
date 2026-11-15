@@ -3,9 +3,27 @@ import '../../style.css';
 
 import { useEffect, useRef, useState } from "react";
 
-function Project8() {
+    // Input: frequency in Hz
+    // Output: absorption in dB/metre
+    // Conditions: 20°C, 50% relative humidity, 101.325 kPa
+    function airAbsorptionDbPerMetre(frequency) {
+        const T = 293.15; // kelvin
+        const h = 1.153; // water vapour molar concentration, expressed as %
+    
+        // Oxygen and nitrogen relaxation frequencies, in Hz
+        const fO = 24 + 4.04e4 * h * (0.02 + h) / (0.391 + h);
+        const fN = 9 + 280 * h;
+    
+        return 8.686 * frequency ** 2 * (
+        1.84e-11 +
+        0.01275 * Math.exp(-2239.1 / T) /
+            (fO + frequency ** 2 / fO) +
+        0.1068 * Math.exp(-3352 / T) /
+            (fN + frequency ** 2 / fN)
+        );
+    }
 
-    function PressureMap({ spacing, focus_height }) {
+    function PressureMap({ spacing, focus_height, wavelength, absorptionDbPerMetre}) {
         const canvasRef = useRef(null);
       
         useEffect(() => {
@@ -15,8 +33,9 @@ function Project8() {
           const image = ctx.createImageData(width, height);
       
           const N = 8;
+          const pitch = spacing*wavelength
           // All distances are in wavelengths, so k = 2π.
-          const k = 2 * Math.PI;
+          const k = 2 * Math.PI / wavelength;
           const xMin = -10, xMax = 10;
           const zMin = 0.5, zMax = 20;
       
@@ -33,27 +52,36 @@ function Project8() {
               let imaginary = 0;
       
               for (let nx = 0; nx < N; nx++) {
+                const xn = (nx - (N - 1) / 2) * pitch;
+                
                 for (let ny = 0; ny < N; ny++) {
-                    const xn = (nx - (N - 1) / 2) * spacing;
-                    const yn = (ny - (N - 1) / 2) * spacing;
+                    const yn = (ny - (N - 1) / 2) * pitch;
 
-                    const distance = Math.hypot(x - xn, 0 - yn, z);
+                    const distance = Math.hypot(x - xn, yn, z);
         
                     const focusX = 0;
                     const focusY = 0;
-                    const focusZ = focus_height; // wavelengths
+                    const focusZ = focus_height; 
+
                     const focusDistance = Math.hypot(focusX - xn, focusY - yn, focusZ);
                     const phase = k * (distance - focusDistance);
 
-                    real += Math.cos(phase) / distance;
-                    imaginary -= Math.sin(phase) / distance;
+                    const distanceMetres = distance * wavelength;
+                    const absorption = 10 ** (
+                    -absorptionDbPerMetre * distanceMetres / 20
+                    );
+
+                    const amplitude = absorption / distance;
+
+                    real += amplitude * Math.cos(phase);
+                    imaginary -= amplitude * Math.sin(phase);
                 }                  
               }
               
       
               const magnitude = Math.hypot(real, imaginary);
               const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
-              const t = Math.max(0, Math.min(1, (db + 40) / 40));
+              const t = Math.max(0, Math.min(1, (db + 20) / 20));
       
               // Dark blue → cyan → yellow.
               const offset = 4 * (row * width + col);
@@ -65,7 +93,7 @@ function Project8() {
           }
       
           ctx.putImageData(image, 0, 0);
-        }, [spacing]);
+        }, [spacing, focus_height, wavelength]);
       
         return (
           <figure style={{ margin: 0 }}>
@@ -81,12 +109,13 @@ function Project8() {
             <figcaption style={{ textAlign: "center" }}>
               x: −10λ to +10λ · Bottom: z = 0.5λ
               <br />
-              Colour: −40 dB (blue) to 0 dB (yellow)
+              Colour: −20 dB (blue) to 0 dB (yellow)
             </figcaption>
           </figure>
         );
       }
 
+function Project8() {
     const [pitch, setPitch] = useState(0.01035);
     const [frequency, setFrequency] = useState(40000);
     const [z_focus, setZFocus] = useState(0.1);
@@ -126,14 +155,19 @@ function Project8() {
                 style={{ display: "block", width: "100%", maxWidth: 360, margin: "0 auto" }}
             />
 
-            <PressureMap spacing={pitch*frequency/343} focus_height={z_focus*frequency/343}/>
+            <PressureMap 
+                spacing={pitch*frequency/343} 
+                focus_height={z_focus*frequency/343}
+                wavelength={343 / frequency}
+                absorptionDbPerMetre={airAbsorptionDbPerMetre(frequency)}
+            />
 
             
             <label htmlFor="spacing">
                 Element spacing d/λ: {(pitch*frequency/343).toFixed(2)} 
             </label>
             <br/>
-            <label htmlFor="height">
+            <label htmlFor="zfocus">
                 Focus height: {z_focus} m or {(z_focus*frequency/343).toFixed(2)} λ
             </label>
             
