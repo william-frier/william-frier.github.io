@@ -108,7 +108,7 @@ import { useEffect, useRef, useState } from "react";
             <figcaption style={{ textAlign: "center" }}>
               x: −100 mm to +100 mm · Bottom: z = 5mm
               <br />
-              Colour: −20 dB (blue) to 0 dB (yellow)
+              Colour: −20 dB (blue) to 30 dB (yellow)
             </figcaption>
           </figure>
         );
@@ -156,18 +156,18 @@ function Project8() {
 
             <PressureMap 
                 pitch={pitch} 
-                focus_height={z_focus*frequency/343}
+                focus_height={z_focus}
                 wavelength={343 / frequency}
                 absorptionDbPerMetre={airAbsorptionDbPerMetre(frequency)}
             />
 
             
             <label htmlFor="spacing">
-                Element spacing d/λ: {(pitch*frequency/343).toFixed(2)} 
+                Element pitch: {(pitch).toFixed(2)} 
             </label>
             <br/>
             <label htmlFor="zfocus">
-                Focus height: {z_focus} m or {(z_focus*frequency/343).toFixed(2)} λ
+                Focus height: {z_focus} m 
             </label>
             
             <input
