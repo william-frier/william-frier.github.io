@@ -13,6 +13,7 @@ import Project4 from './pages/projects/project_4.js';
 import Project5 from './pages/projects/project_5.js';
 import Project6 from './pages/projects/project_6.js';
 import Project7 from './pages/projects/project_7.js';
+import Project8 from './pages/projects/project_8.js';
 import ArticlePage from './pages/articles.js';
 
 import React, { useState } from 'react';
@@ -65,6 +66,7 @@ function App() {
             <Route path="/projects/project5" element={<Project5/>} />
             <Route path="/projects/project6" element={<Project6/>} />
             <Route path="/projects/project7" element={<Project7/>} />
+            <Route path="/projects/project8" element={<Project8/>} />
         </Routes>
       </Router>
 

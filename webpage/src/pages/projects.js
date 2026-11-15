@@ -150,6 +150,20 @@ function ProjectPage() {
                 </CardBody>
               </Card>
             </Col>
+            <Col>
+              <Card>
+                <CardHeader>Project 8</CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">Array heatmap</CardTitle>
+                  <CardText>
+                    learn canvas 
+                  </CardText>
+                  <Button href="/#/projects/project8">
+                  Go to project
+                </Button>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
         </Container>
 

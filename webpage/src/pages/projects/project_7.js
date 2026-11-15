@@ -94,12 +94,6 @@ function Project7() {
         );
       }
 
-
-    //document.querySelector("#results").textContent =
-    //    `Spacing: ${spacing} λ\n` +
-    //    [0, 30, 60].map(angle => `${angle}°: ${arrayFactorDb(angle, spacing).toFixed(1)} dB`
-    //    ).join("\n");
-
     const [pitch, setPitch] = useState(0.01035);
     const [frequency, setFrequency] = useState(40000);
 
@@ -139,11 +133,12 @@ function Project7() {
                 style={{ display: "block", width: "100%", maxWidth: 360, margin: "0 auto" }}
             />
 
-        
-
             <BeamPattern spacing={pitch*frequency/343} />
 
-
+            
+            <label htmlFor="spacing">
+                Element spacing d/λ: {(pitch*frequency/343).toFixed(2)} 
+            </label>
 
 
         </div>
