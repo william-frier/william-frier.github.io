@@ -3,6 +3,24 @@ import '../../style.css';
 
 import { useEffect, useRef, useState } from "react";
 
+    function pressureColour(t) {
+        const colours = [
+        [68, 1, 84],
+        [59, 82, 139],
+        [33, 145, 140],
+        [94, 201, 98],
+        [253, 231, 37]
+        ];
+    
+        const position = Math.max(0, Math.min(1, t)) * (colours.length - 1);
+        const i = Math.min(Math.floor(position), colours.length - 2);
+        const fraction = position - i;
+    
+        return colours[i].map((value, channel) =>
+        Math.round(value + fraction * (colours[i + 1][channel] - value))
+        );
+    }
+
     // Input: frequency in Hz
     // Output: absorption in dB/metre
     // Conditions: 20°C, 50% relative humidity, 101.325 kPa
@@ -66,8 +84,13 @@ import { useEffect, useRef, useState } from "react";
           const xMin = -0.1, xMax = 0.1; //in meter
           const zMin = 0.005, zMax = 0.205; // in meter
       
-          const referenceDistance = 1; // meter
-          const reference = N * N / referenceDistance;
+          const splReference = 20e-6; // Pa RMS, standard reference in air
+
+          // Illustrative only—replace with your transducer's specification.
+          const calibrationSpl = 110;       // dB SPL
+          const calibrationDistance = 0.3;  // metres
+          const calibrationPressure =
+            splReference * 10 ** (calibrationSpl / 20);
       
           for (let row = 0; row < height; row++) {
             // Larger z at the top; the array lies below the image.
@@ -86,41 +109,47 @@ import { useEffect, useRef, useState } from "react";
 
                     const distance = Math.hypot(x - xn, yn, z);
         
-                    
-                    
                     const focusDistance = Math.hypot(focusX - xn, focusY - yn, focusZ);
                     const phase = k * (distance - focusDistance);
 
 
-                    const absorption = 10 ** (-absorptionDbPerMetre * distance / 20);
+                    const absorptionFromCalibration = 10 ** (
+                        -absorptionDbPerMetre *
+                        (distance - calibrationDistance) / 20
+                      );
 
                     const lateralDistance = Math.hypot(x - xn, yn);
                     const sinTheta = lateralDistance / distance;
 
                     const directivity = pistonDirectivity(
-                    k * (pitch / 2) * sinTheta
+                    k * pistonRadius * sinTheta
                     );
 
-                    const amplitude = directivity * absorption / distance;
+                    const amplitude =
+                        calibrationPressure *
+                        (calibrationDistance / distance) *
+                        directivity *
+                        absorptionFromCalibration;
 
                     real += amplitude * Math.cos(phase);
                     imaginary -= amplitude * Math.sin(phase);
                 }                  
             }
-              
       
-            const magnitude = Math.hypot(real, imaginary);
-            const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
+            const pressureRms = Math.hypot(real, imaginary);
+                const db = 20 * Math.log10(
+                Math.max(pressureRms, 1e-12) / splReference
+                );
                 
-            const dbMin = -30;
-            const dbMax = 20;
-            const t = Math.max(0, Math.min(1, (db - dbMin) / (dbMax - dbMin)));
-      
-            // Dark blue → cyan → yellow.
+            const dbMin = 100;
+            const dbMax = 160; // Initial display range; adjust to your calibration
+            const t = (db - dbMin) / (dbMax - dbMin);
+            const [red, green, blue] = pressureColour(t);
+            
             const offset = 4 * (row * width + col);
-            image.data[offset] = 255 * Math.max(0, 2 * t - 1);
-            image.data[offset + 1] = 255 * t;
-            image.data[offset + 2] = 255 * (1 - t);
+            image.data[offset] = red;
+            image.data[offset + 1] = green;
+            image.data[offset + 2] = blue;
             image.data[offset + 3] = 255;
             }
           }
@@ -142,7 +171,7 @@ import { useEffect, useRef, useState } from "react";
             <figcaption style={{ textAlign: "center" }}>
               x: −100 mm to +100 mm · Bottom: z = 5mm
               <br />
-              Colour: −30 dB (blue) to 20 dB (yellow)
+              Colour: 90–160 dB SPL re 20 µPa RMS
             </figcaption>
           </figure>
         );
@@ -181,7 +210,7 @@ function Project8() {
                 id="frequency"
                 type="range"
                 min="20000"
-                max="200000"
+                max="150000"
                 step="1000"
                 value={frequency}
                 onChange={event => setFrequency(Number(event.target.value))}
