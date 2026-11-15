@@ -23,6 +23,27 @@ import { useEffect, useRef, useState } from "react";
         );
     }
 
+    // Bessel J1 power series; suitable for the modest arguments used here.
+    function besselJ1(x) {
+        let term = x / 2;
+        let sum = term;
+    
+        for (let m = 1; m < 100; m++) {
+        term *= -(x * x / 4) / (m * (m + 1));
+        sum += term;
+        if (Math.abs(term) < 1e-14) break;
+        }
+    
+        return sum;
+    }
+    
+    function pistonDirectivity(argument) {
+        if (Math.abs(argument) < 1e-4) {
+        return 1 - argument * argument / 8;
+        }
+        return 2 * besselJ1(argument) / argument;
+    }    
+
     function PressureMap({ pitch, focus_height, wavelength, absorptionDbPerMetre}) {
         const canvasRef = useRef(null);
       
@@ -33,7 +54,14 @@ import { useEffect, useRef, useState } from "react";
           const image = ctx.createImageData(width, height);
       
           const N = 8;
+          const pistonRadius = pitch / 2;
+
           const k = 2 * Math.PI / wavelength;
+
+          const focusX = 0;
+          const focusY = 0;
+          const focusZ = focus_height; 
+
 
           const xMin = -0.1, xMax = 0.1; //in meter
           const zMin = 0.005, zMax = 0.205; // in meter
@@ -58,16 +86,22 @@ import { useEffect, useRef, useState } from "react";
 
                     const distance = Math.hypot(x - xn, yn, z);
         
-                    const focusX = 0;
-                    const focusY = 0;
-                    const focusZ = focus_height; 
-
+                    
+                    
                     const focusDistance = Math.hypot(focusX - xn, focusY - yn, focusZ);
                     const phase = k * (distance - focusDistance);
 
+
                     const absorption = 10 ** (-absorptionDbPerMetre * distance / 20);
 
-                    const amplitude = absorption / distance;
+                    const lateralDistance = Math.hypot(x - xn, yn);
+                    const sinTheta = lateralDistance / distance;
+
+                    const directivity = pistonDirectivity(
+                    k * (pitch / 2) * sinTheta
+                    );
+
+                    const amplitude = directivity * absorption / distance;
 
                     real += amplitude * Math.cos(phase);
                     imaginary -= amplitude * Math.sin(phase);
@@ -78,8 +112,8 @@ import { useEffect, useRef, useState } from "react";
             const magnitude = Math.hypot(real, imaginary);
             const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
                 
-            const dbMin = -20;
-            const dbMax = 30;
+            const dbMin = -30;
+            const dbMax = 20;
             const t = Math.max(0, Math.min(1, (db - dbMin) / (dbMax - dbMin)));
       
             // Dark blue → cyan → yellow.
@@ -92,7 +126,7 @@ import { useEffect, useRef, useState } from "react";
           }
       
           ctx.putImageData(image, 0, 0);
-        }, [pitch, focus_height, wavelength]);
+        }, [pitch, focus_height, wavelength, absorptionDbPerMetre]);
       
         return (
           <figure style={{ margin: 0 }}>
@@ -102,13 +136,13 @@ import { useEffect, useRef, useState } from "react";
               width={200}
               height={200}
               role="img"
-              aria-label="Pressure magnitude in front of an eight-element acoustic array"
+              aria-label="Pressure magnitude in front of a 64-element acoustic array"
               style={{ display: "block", width: "100%" }}
             />
             <figcaption style={{ textAlign: "center" }}>
               x: −100 mm to +100 mm · Bottom: z = 5mm
               <br />
-              Colour: −20 dB (blue) to 30 dB (yellow)
+              Colour: −30 dB (blue) to 20 dB (yellow)
             </figcaption>
           </figure>
         );
