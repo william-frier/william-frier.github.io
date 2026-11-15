@@ -100,7 +100,7 @@ function Project7() {
     //    [0, 30, 60].map(angle => `${angle}°: ${arrayFactorDb(angle, spacing).toFixed(1)} dB`
     //    ).join("\n");
 
-    const [pitch, setPitch] = useState(0.0005);
+    const [pitch, setPitch] = useState(0.01035);
     const [frequency, setFrequency] = useState(40000);
 
     return(

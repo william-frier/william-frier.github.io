@@ -25,7 +25,7 @@ function ProjectPage() {
             <p>
               I am learning web development. 
               On this page, I am sharing small projects I am doing as I am practicing.
-              Nothing fancy, just ome Node.js and React.
+              Nothing fancy, just some Node.js and React.
             </p>
 
         </Row>       
