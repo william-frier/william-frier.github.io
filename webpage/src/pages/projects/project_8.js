@@ -23,7 +23,7 @@ import { useEffect, useRef, useState } from "react";
         );
     }
 
-    function PressureMap({ spacing, focus_height, wavelength, absorptionDbPerMetre}) {
+    function PressureMap({ pitch, focus_height, wavelength, absorptionDbPerMetre}) {
         const canvasRef = useRef(null);
       
         useEffect(() => {
@@ -33,14 +33,13 @@ import { useEffect, useRef, useState } from "react";
           const image = ctx.createImageData(width, height);
       
           const N = 8;
-          const pitch = spacing*wavelength
-          // All distances are in wavelengths, so k = 2π.
           const k = 2 * Math.PI / wavelength;
-          const xMin = -10, xMax = 10;
-          const zMin = 0.5, zMax = 20;
+
+          const xMin = -0.1, xMax = 0.1; //in meter
+          const zMin = 0.005, zMax = 0.205; // in meter
       
-          // Fixed reference: N coherent unit sources at a distance of 1λ.
-          const reference = N;
+          const referenceDistance = 1; // meter
+          const reference = N * N / referenceDistance;
       
           for (let row = 0; row < height; row++) {
             // Larger z at the top; the array lies below the image.
@@ -66,38 +65,38 @@ import { useEffect, useRef, useState } from "react";
                     const focusDistance = Math.hypot(focusX - xn, focusY - yn, focusZ);
                     const phase = k * (distance - focusDistance);
 
-                    const distanceMetres = distance * wavelength;
-                    const absorption = 10 ** (
-                    -absorptionDbPerMetre * distanceMetres / 20
-                    );
+                    const absorption = 10 ** (-absorptionDbPerMetre * distance / 20);
 
                     const amplitude = absorption / distance;
 
                     real += amplitude * Math.cos(phase);
                     imaginary -= amplitude * Math.sin(phase);
                 }                  
-              }
+            }
               
       
-              const magnitude = Math.hypot(real, imaginary);
-              const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
-              const t = Math.max(0, Math.min(1, (db + 20) / 20));
+            const magnitude = Math.hypot(real, imaginary);
+            const db = 20 * Math.log10(Math.max(magnitude / reference, 1e-12));
+                
+            const dbMin = -20;
+            const dbMax = 30;
+            const t = Math.max(0, Math.min(1, (db - dbMin) / (dbMax - dbMin)));
       
-              // Dark blue → cyan → yellow.
-              const offset = 4 * (row * width + col);
-              image.data[offset] = 255 * Math.max(0, 2 * t - 1);
-              image.data[offset + 1] = 255 * t;
-              image.data[offset + 2] = 255 * (1 - t);
-              image.data[offset + 3] = 255;
+            // Dark blue → cyan → yellow.
+            const offset = 4 * (row * width + col);
+            image.data[offset] = 255 * Math.max(0, 2 * t - 1);
+            image.data[offset + 1] = 255 * t;
+            image.data[offset + 2] = 255 * (1 - t);
+            image.data[offset + 3] = 255;
             }
           }
       
           ctx.putImageData(image, 0, 0);
-        }, [spacing, focus_height, wavelength]);
+        }, [pitch, focus_height, wavelength]);
       
         return (
           <figure style={{ margin: 0 }}>
-            <div style={{ textAlign: "center" }}>z = 20λ</div>
+            <div style={{ textAlign: "center" }}>z = 205mm</div>
             <canvas
               ref={canvasRef}
               width={200}
@@ -107,7 +106,7 @@ import { useEffect, useRef, useState } from "react";
               style={{ display: "block", width: "100%" }}
             />
             <figcaption style={{ textAlign: "center" }}>
-              x: −10λ to +10λ · Bottom: z = 0.5λ
+              x: −100 mm to +100 mm · Bottom: z = 5mm
               <br />
               Colour: −20 dB (blue) to 0 dB (yellow)
             </figcaption>
@@ -156,7 +155,7 @@ function Project8() {
             />
 
             <PressureMap 
-                spacing={pitch*frequency/343} 
+                pitch={pitch} 
                 focus_height={z_focus*frequency/343}
                 wavelength={343 / frequency}
                 absorptionDbPerMetre={airAbsorptionDbPerMetre(frequency)}
